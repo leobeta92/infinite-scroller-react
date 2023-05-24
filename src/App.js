@@ -1,23 +1,27 @@
-import logo from './logo.svg';
 import './App.css';
+import ImageContainer from './components/ImageContainer';
+
+const apiKey = 'qT7mffHag2_23vYlzYV1BxiuFTPu2CLz4fd3gum7inQ';
+const apiURL = `https://api.unsplash.com/photos/random/?client_id=${apiKey}&count=5`;
+
+let photosArray = [];
+
+    try {
+        const response = await fetch(apiURL);
+        photosArray = await response.json();
+    }
+
+    // Catch error 
+    catch(error) {
+
+    }
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Infinite Scroller</h1>
+      <ImageContainer photos={photosArray}>
+      </ImageContainer>
     </div>
   );
 }
