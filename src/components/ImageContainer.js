@@ -8,17 +8,12 @@ function ImageContainer(props) {
     // console.log("Props href:",props.photos[0].links.html);
     // console.log("Props alt:",props.photos[0].alt_description);
 
- 
+
     return (
         <div className='image-container'>
-            <img width="600px" src={props.photos[0].urls.full}>
-            </img>
-            {props.photos.map((photo) => {
-            <Photo >
-                <img id={photo.id} href={photo.urls.full}/>
-            </Photo>})}
+            {props.photos.map(photo => {return <Photo href={photo.links.html} id={photo.id} src={photo.urls.full} title={photo.alt_description}></Photo>})}
         </div>
-    )
+    );
 }
 
 export default ImageContainer;
